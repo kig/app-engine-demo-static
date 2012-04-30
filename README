@@ -1,3 +1,5 @@
+http://github.com/kig/app-engine-demo-static
+
 How to host your website on Google App Engine:
 1. Sign up to http://appengine.google.com
 2. Create a new application (I named mine webtest-12345).
@@ -19,3 +21,34 @@ If you want to have a more automatic experience, here's a small script:
   cd app-engine-demo-static;
   sed -e "s/webtest-12345/$MY_APP_NAME/" -i '' app.yaml;
   appcfg.py update .
+
+To host the site from your own domain:
+1. Go to the Application Dashboard (easiest way is to click the Dashboard
+   button in App Engine Launcher)
+2. Go to Administration > Application Settings.
+3. Go to Domain Setup and click on Add Domain...
+4. If you're on Google Apps, enter your domain.
+5. Otherwise click on "Sign up to Google Apps"
+  5.1. Enter your details and optionally register your domain.
+  5.2. Go through the rest of the sign up process.
+  5.3. Create your website app with your new Google Apps account 
+       following the instructions above. Or juggle accounts (you need to be
+       logged in to Google App Engine to add the app to your domain and you
+       need to be logged in to Apps to accept the addition.)
+  5.4. Done? Ok, let's continue!
+6. Click the "Yes I want to add this app to my domain"-button.
+7. Now you're on the Apps app settings page. Click on "Add new URL",
+   enter www and click "Add".
+8. If you registered your domain via Google Apps:
+   Go to go to "Domain Settings" > "Domain Names" > "Redirect your naked domain"
+   Continue >> I've completed these steps >> Save Changes
+   (You don't need to change any settings at the DNS, they're all
+    correct already)
+8.1 Otherwise log into your DNS service provider and 
+   add a CNAME record from www.YOURDOMAINNAME to ghs.google.com and
+   do the "Redirect your naked domain" bit above and in your DNS add
+   the four A records for YOURDOMAINNAME. Click Save Changes on the
+   Google Apps page.
+9. Done! (http://webtest-12345.com)
+
+Wait for a couple minutes for all the DNS changes to settle.
