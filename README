@@ -1,0 +1,21 @@
+How to host your website on Google App Engine:
+1. Sign up to http://appengine.google.com
+2. Create a new application (I named mine webtest-12345).
+3. Install the Python SDK https://developers.google.com/appengine/downloads
+4. Create a new directory with an app.yaml file like this:
+   https://github.com/kig/app-engine-demo-static/blob/master/app.yaml
+   (replace webtest-12345 with the name of your app).
+5. Create a subdir www/ and put your site there, remember to have index.html. 
+6. Start the Google App Engine Launcher and do "Add Existing Application...",
+   pointing it to the directory with the app.yaml file.
+7. Test locally.
+8. When happy, click deploy.
+9. Done! (Check it out: http://webtest-12345.appspot.com/)
+
+If you want to have a more automatic experience, here's a small script:
+
+  export MY_APP_NAME=your-app-name-here;
+  git clone https://github.com/kig/app-engine-demo-static.git;
+  cd app-engine-demo-static;
+  sed -e "s/webtest-12345/$MY_APP_NAME/" -i '' app.yaml;
+  appcfg.py update .
