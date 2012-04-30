@@ -1,0 +1,16 @@
+application: webtest-12345
+version: 1
+runtime: python
+api_version: 1
+
+#default_expiration: "30d"
+
+handlers:
+
+- url: /
+  static_files: www/index.html
+  upload: www/index.html
+
+- url: /
+  static_dir: www
+
